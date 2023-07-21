@@ -7,12 +7,12 @@
 }
 
 body {
-    background-color: #090e22;
+    background: linear-gradient(180deg, #1D5D9B 0%, #75C2F6 98%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #fff;
+    color: #ccc;
 }
 
 /* Containers */
@@ -23,6 +23,7 @@ body {
 .container {
     min-width: 400px;
     min-height: 400px;
-    background-color: #1d1e33;
+    border-radius: 50px;
+    background-color: #116D6E;
     padding: 2rem;
 }
