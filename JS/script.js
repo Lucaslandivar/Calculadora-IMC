@@ -91,7 +91,7 @@ function calcImc(weight, height) {
   // vendo se os inputs tem números válidos
   if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
     showError("Peso e altura devem ser números válidos e maiores que zero.");
-    return null; // Return null to indicate an error
+    return null; 
   }
 
   const imc = (weight / (height * height)).toFixed(1);
@@ -169,23 +169,23 @@ calcBtn.addEventListener("click", (e) => {
 
   switch (info) {
     case "Magreza":
-      imcNumber.classList.add("low"); // Fixed class names here
+      imcNumber.classList.add("low"); 
       imcInfo.classList.add("low");
       break;
     case "Normal":
-      imcNumber.classList.add("good"); // Fixed class names here
+      imcNumber.classList.add("good"); 
       imcInfo.classList.add("good");
       break;
     case "Sobrepeso":
-      imcNumber.classList.add("low"); // Fixed class names here
+      imcNumber.classList.add("low"); 
       imcInfo.classList.add("low");
       break;
     case "Obesidade":
-      imcNumber.classList.add("medium"); // Fixed class names here
+      imcNumber.classList.add("medium"); 
       imcInfo.classList.add("medium");
       break;
     case "Obesidade grave":
-      imcNumber.classList.add("high"); // Fixed class names here
+      imcNumber.classList.add("high"); 
       imcInfo.classList.add("high");
       break;
   }
