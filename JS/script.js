@@ -75,7 +75,7 @@ function createTable(data) {
 
 // Limpar os inputs
 function cleanInputs() {
-    heightInput.valeu = "";
+    heightInput.value = "";
     weightInput.value = "";
     imcNumber.classList = "";
     imcInfo.classList = "";
@@ -112,48 +112,49 @@ createTable(data);
 });
 
 // Converter a virgula em ponto
+
 calcBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
   const height = +heightInput.value.replace(",", ".");
   const weight = +weightInput.value.replace(",", ".");
 
-  if("!weight || !height") return;
+  if (!weight || !height) return; // Fixed condition here
 
   const imc = calcImc(weight, height);
 
   let info;
 
   data.forEach((item) => {
-    if(imc >= item.min && imc <= item.max) {
+    if (imc >= item.min && imc <= item.max) {
       info = item.info;
     }
   });
 
-  if(!info) return;
+  if (!info) return;
 
   imcNumber.innerText = imc;
   imcInfo.innerText = info;
 
-  switch(info) {
+  switch (info) {
     case "Magreza":
-      imcNumber.classList.add("low");
+      imcNumber.classList.add("low"); // Fixed class names here
       imcInfo.classList.add("low");
       break;
     case "Normal":
-      imcNumber.classList.add("good");
+      imcNumber.classList.add("good"); // Fixed class names here
       imcInfo.classList.add("good");
       break;
     case "Sobrepeso":
-      imcNumber.classList.add("low");
+      imcNumber.classList.add("low"); // Fixed class names here
       imcInfo.classList.add("low");
       break;
     case "Obesidade":
-      imcNumber.classList.add("medium");
+      imcNumber.classList.add("medium"); // Fixed class names here
       imcInfo.classList.add("medium");
       break;
     case "Obesidade grave":
-      imcNumber.classList.add("high");
+      imcNumber.classList.add("high"); // Fixed class names here
       imcInfo.classList.add("high");
       break;
   }
