@@ -88,10 +88,29 @@ function validDigits(text) {
 
 // Calcular imc
 function calcImc(weight, height) {
-  const imc = (weight / (height * height)).toFixed(1); // Para só aparecer um número quebrado na resposta
+  // vendo se os inputs tem números válidos
+  if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+    showError("Peso e altura devem ser números válidos e maiores que zero.");
+    return null; // Return null to indicate an error
+  }
 
+  const imc = (weight / (height * height)).toFixed(1);
   return imc;
 }
+
+// Mostrar erro
+function showError(message) {
+  const errorMessage = document.querySelector("#error-message");
+  errorMessage.innerText = message;
+  errorMessage.classList.remove("hide");
+}
+
+// Ocultar erro
+function hideError() {
+  const errorMessage = document.querySelector("#error-message");
+  errorMessage.classList.add("hide");
+}
+
 
 function showOrHideResults() {
   calcContainer.classList.toggle("hide");
@@ -116,12 +135,24 @@ createTable(data);
 calcBtn.addEventListener("click", (e) => {
   e.preventDefault();
 
+  hideError(); // esconder mensagem de erro
+
   const height = +heightInput.value.replace(",", ".");
   const weight = +weightInput.value.replace(",", ".");
 
-  if (!weight || !height) return; // Fixed condition here
+  // vendo se os inputs estão vazios ou inválidos
+  if (!weight || !height || isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+    showError("Por favor, forneça valores válidos para peso e altura.");
+    return;
+  }
 
   const imc = calcImc(weight, height);
+
+  if (imc === null) {
+    // se um erro ocorre durante o calculo
+    return;
+  }
+
 
   let info;
 
